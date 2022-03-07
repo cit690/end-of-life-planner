@@ -4,15 +4,16 @@
 
 <section>
   <h1><%= title %> </h1>
-  <!-- <% if (user) { %>  -->
   <ul>
     <% plans.forEach(plan => { %> 
       <li>
         <a href="/plans/<%= plan._id %>"><%= plan.name %>, <%= plan.location %></a>
       </li>
+      <form action="/plans/<%= plan._id %>?_method=DELETE" method="POST">
+        <button>X</button>
+      </form>
     <% }) %> 
   </ul>
-  <!-- <% } %>  -->
 </section>
 
 <%- include('../partials/footer') %>

@@ -8,6 +8,7 @@
       <a href="/auth/logout">
         <button type="submit">Logout</button>
       </a>
+      <a href="/plans" <%- title === 'Your Death Plans' ? 'class="active"' : "" %> >All Plans</a>
     <% } else { %>
       <a href="/auth/google" class="siwg-link">
         <button type="submit" class="siwg">

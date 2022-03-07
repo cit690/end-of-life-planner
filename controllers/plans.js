@@ -13,15 +13,63 @@ function index(req, res){
   })
 }
 
-function newProfile(req,res){
+function newPlan(req,res){
   res.render('plans/new', {
     title: 'Add your Death Plan'
   })
 }
 
+function create(req, res){
+  req.body.owner = req.user.profile._id
+  req.body.dnr = !!req.body.dnr
+  Plan.create(req.body)
+  .then(plan => {
+    console.log(plan)
+    res.redirect(`/plans/${plan._id}`)
+  })
+  .catch(err => {
+    res.redirect('/plans/new')
+    console.log(err)
+  })
+}
+
+function show(req, res) {
+  Plan.findById(req.params.id)
+  .then(plan => {
+    res.render('plans/show', {
+      plan,
+      title: "Your Death Plan"
+    })
+  })
+  .catch(err => {
+    res.redirect('/plans')
+  })
+}
+
+function deletePlan(req, res){
+  Plan.findByIdAndDelete(req.params.id)
+  .then(plan => {
+    res.redirect('/plans')
+  })
+}
+
+function edit(req, res){
+  Plan.findById(req.params.id)
+  .then(plan => {
+    res.render('plans/edit', {
+      plan,
+      title: "Edit Your Plan"
+    })
+  })
+}
+
 export{
   index,
-  newProfile as new,
+  newPlan as new,
+  create,
+  show,
+  deletePlan as delete,
+  edit,
 
 }
 

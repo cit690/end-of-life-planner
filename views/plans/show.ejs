@@ -1,0 +1,40 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/style.css">
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %> </h1>
+  <div>
+    <a href="/plans/<%= plan._id %>/edit ">
+      <button>Edit Your Plan</button>
+    </a>
+  </div>
+  <section>
+    <div>Name: </div>
+    <div>
+      <%= plan.name %> 
+    </div>
+    <div>Date of Birth: </div>
+    <div>
+      <%= plan.dateOfBirth %>
+    </div>
+    <div>Location: </div>
+    <div>
+      <%= plan.location %> 
+    </div>
+    <div>Next of Kin: </div>
+    <div>
+      <%= plan.nextOfKin %> 
+    </div>
+    <div>Durable Power of Attorney: </div>
+    <div>
+      <%= plan.powerOfAttorney %> 
+    </div>
+    <div>Do Not Resuscitate?: </div>
+    <div>
+      <%= plan.dnr ? 'Yes' : 'No' %> 
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer') %>

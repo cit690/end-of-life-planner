@@ -1,5 +1,9 @@
 import mongoose from 'mongoose'
 
+const willSchema = new mongoose.Schema({
+  content: String,
+})
+
 const planSchema = new mongoose.Schema({
   name:{
     type: String,
@@ -8,7 +12,6 @@ const planSchema = new mongoose.Schema({
   dateOfBirth: {
     type: Date,
     required: true,
-    trim: true,
   },
   location: String,
   nextOfKin: String,
@@ -16,7 +19,8 @@ const planSchema = new mongoose.Schema({
   dnr: {
    type: Boolean,
    default: false,
-  }
+  },
+  will: [willSchema],
 
 })
 

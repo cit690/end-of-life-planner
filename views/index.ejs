@@ -11,8 +11,10 @@
       />
     </div>
     <% } %>
-    <h2>Create a <a href="/plans/new">New Profile</a></h2>
-    <h2>View Your <a href="/plans">Profile(s)</a></h2>
+    <% if (user){ %> 
+    <h2>Create a <a href="/plans/new">New Death Plan</a></h2>
+    <h2>View Your <a href="/plans">Death Plans</a></h2>
+    <% } %> 
 </main>
 
 <%- include('./partials/footer') %>
