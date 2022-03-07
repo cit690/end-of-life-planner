@@ -61,6 +61,29 @@ function edit(req, res){
       title: "Edit Your Plan"
     })
   })
+  .catch(err => {
+    res.redirect('/plans')
+  })
+}
+
+function update(req, res){
+  Plan.findById(req.params.id)
+  .then(plan => {
+    if (plan.owner.equals(req.user.profile._id)){
+      req.body.dnr = !!req.body.dnr
+      plan.updateOne(req.body, {new: true})
+      .then(() => {
+        res.redirect(`/plans/${plan._id}`)
+      })
+    } else {
+      throw new Error("NOT AUTHORIZED")
+    }
+    console.log(plan)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/plans')
+  })
 }
 
 export{
@@ -70,6 +93,7 @@ export{
   show,
   deletePlan as delete,
   edit,
+  update,
 
 }
 

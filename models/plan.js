@@ -1,5 +1,7 @@
 import mongoose from 'mongoose'
 
+const Schema = mongoose.Schema
+
 const willSchema = new mongoose.Schema({
   content: String,
 })
@@ -20,8 +22,8 @@ const planSchema = new mongoose.Schema({
    type: Boolean,
    default: false,
   },
-  will: [willSchema],
-
+  wills: [willSchema],
+  owner: {type: Schema.Types.ObjectId, ref: "Profile"},
 })
 
 const Plan = mongoose.model('Plan', planSchema)

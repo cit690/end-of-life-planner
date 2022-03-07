@@ -10,7 +10,7 @@
     </label><br>
     <label>
       Date of Birth:
-      <input type="date" name="dateOfBirth">
+      <input type="date" name="dateOfBirth" <%= new Date(plan.date).toDateString() %> >
     </label><br>
     <label>
       Location:

@@ -14,6 +14,8 @@ router.get('/:id', isLoggedIn, plansCtrl.show)
 
 router.get('/:id/edit', isLoggedIn, plansCtrl.edit)
 
+router.put('/:id', isLoggedIn, plansCtrl.update)
+
 router.delete('/:id', isLoggedIn, plansCtrl.delete)
 
 export {
