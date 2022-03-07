@@ -1,12 +1,12 @@
 import { Router } from "express"
 // import { isLoggedIn } from '../middleware/middleware.js'
-import * as profilesCtrl from "../controllers/profiles.js"
+import * as plansCtrl from "../controllers/plans.js"
 
 const router = Router()
 
-router.get("/", profilesCtrl.index)
+router.get("/", plansCtrl.index)
 
-router.get('/new', profilesCtrl.new)
+router.get('/new', plansCtrl.new)
 
 export {
   router

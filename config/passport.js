@@ -31,7 +31,7 @@ passport.use(
           newUser.save(function (err) {
             if (err) {
               // Something went wrong while making a user - delete the profile
-              // we just created to prevent orphan profiles.
+              // we just created to prevent orphan plans.
               Profile.findByIdAndDelete(newProfile._id)
               return done(err)
             }

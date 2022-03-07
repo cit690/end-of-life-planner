@@ -6,9 +6,9 @@
   <h1><%= title %> </h1>
   <!-- <% if (user) { %>  -->
   <ul>
-    <% profiles.forEach(profile => { %> 
+    <% plans.forEach(plan => { %> 
       <li>
-        <a href="/profiles/<%= profile._id %>"><%= profile.name %>, <%= profile.location %></a>
+        <a href="/plans/<%= plan._id %>"><%= plan.name %>, <%= plan.location %></a>
       </li>
     <% }) %> 
   </ul>
