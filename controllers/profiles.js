@@ -13,6 +13,15 @@ function index(req, res){
   })
 }
 
+function newProfile(req,res){
+  res.render('profiles/new', {
+    title: 'Add your Death Plan'
+  })
+}
+
 export{
   index,
+  newProfile as new,
+  
 }
+
