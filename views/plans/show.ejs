@@ -36,19 +36,21 @@
     </div>
   </section>
   <h2>Living Will Statement</h2>
-  <form action="/plans/<%= plan._id %>/wills " method="post">
+  <form action="/plans/<%= plan._id %>/wills" method="post">
     <textarea name="content" id="content-textarea"></textarea>
     <button type="submit">Add Will</button>
   </form>
-  <p>
     <% if (plan.wills.length) {%> 
-      <% plan.wills.forEach(plan => { %> 
-        <%= plan.wills %> 
-      <% }) %> 
+      <body> 
+        <% plan.wills.forEach(plan => { %> 
+        <p>
+          <%= will.content %> 
+        </p>
+          <% }) %> 
+        </body>
     <% } else { %> 
-      <h4>No Will Statement Yet</h4>
+          <h4>No Will Statement Yet</h4>
     <% } %> 
-  </p>
 </main>
 
 <%- include('../partials/footer') %>

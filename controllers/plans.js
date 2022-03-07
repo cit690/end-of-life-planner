@@ -86,6 +86,21 @@ function update(req, res){
   })
 }
 
+function createWill(req, res){
+  console.log('bloop')
+  Plan.findById(req.params.id)
+  .then(plan => {
+    plan.wills.push(req.body)
+    plan.save()
+    .then(() => {
+      res.redirect(`/plans/${plan._id}`)
+    })
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
+
 export{
   index,
   newPlan as new,
@@ -94,6 +109,7 @@ export{
   deletePlan as delete,
   edit,
   update,
+  createWill,
 
 }
 
