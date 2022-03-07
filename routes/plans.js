@@ -16,7 +16,7 @@ router.get('/:id/edit', isLoggedIn, plansCtrl.edit)
 
 router.put('/:id', isLoggedIn, plansCtrl.update)
 
-router.post('/id/wills', isLoggedIn, plansCtrl.createWill)
+router.post('/:id/wills', isLoggedIn, plansCtrl.createWill)
 
 router.delete('/:id', isLoggedIn, plansCtrl.delete)
 
