@@ -46,10 +46,10 @@
   <form action="/plans/<%= plan._id %>/dispositions" method="post">
     <select name="dispositionId">
       <% dispositions.forEach(disposition => { %>
-        <option value="<%= disposition._id %> "><%= disposition.method %> </option>
+        <option value="<%= disposition._id %>"><%= disposition.method %></option>
       <% }) %> 
     </select>
-    <button>Add Your Preferred Final Disposition Method</button>
+    <button type="submit">Add Your Preferred Final Disposition Method</button>
     </form>
 
   <h2>Living Will Statement</h2>

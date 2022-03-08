@@ -47,11 +47,8 @@ function create(req, res){
 //   })
 // }
 function show(req, res) {
-  console.log(req.params.id)
- 
   Plan.findById(req.params.id).populate('finalDispo').then(plan => {
     Disposition.find({_id: {$nin: plan.finalDispo}}, function(err, dispositions){
-    console.log(dispositions)
       res.render('plans/show', {
         plan,
         dispositions,
@@ -59,12 +56,7 @@ function show(req, res) {
       })
     })
   })
-
 }
-//   console.log('hello world')
-//   console.log(req.params.id)
-//   console.log(plan)
-
 
 function deletePlan(req, res){
   Plan.findByIdAndDelete(req.params.id)
@@ -98,7 +90,6 @@ function update(req, res){
     } else {
       throw new Error("NOT AUTHORIZED")
     }
-    console.log(plan)
   })
   .catch(err => {
     console.log(err)
@@ -124,7 +115,7 @@ function createWill(req, res){
 function addDisposition(req, res){
   Plan.findById(req.params.id)
   .then(plan => {
-    plan.dispositions.push(req.body.dispositionId)
+    plan.finalDispo.push(req.body.dispositionId)
     plan.save()
     .then(()=>{
       res.redirect(`/plans/${plan._id}`)
