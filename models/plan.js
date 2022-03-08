@@ -24,6 +24,7 @@ const planSchema = new mongoose.Schema({
   },
   wills: [willSchema],
   owner: {type: Schema.Types.ObjectId, ref: "Profile"},
+  dispositions: [{ type: Schema.Types.ObjectId, ref: "Disposition" }]
 })
 
 const Plan = mongoose.model('Plan', planSchema)

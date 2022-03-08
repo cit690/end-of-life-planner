@@ -1,0 +1,18 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/style.css">
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %> </h1>
+  <select>
+    <% dispositions.forEach( => { %>
+      <option><%= disposition.method %> </option>
+    <% }) %> 
+  </select>
+  <form action="/dispositions" method="post">
+    <label for="method-input">Method: </label>
+    <input type="text" name="method">
+  </form>
+</main>
+
+<%- include('../partials/footer') %>
