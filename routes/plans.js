@@ -18,6 +18,8 @@ router.put('/:id', isLoggedIn, plansCtrl.update)
 
 router.post('/:id/wills', isLoggedIn, plansCtrl.createWill)
 
+router.post('/:id/dispositions', isLoggedIn, plansCtrl.addDisposition)
+
 router.delete('/:id', isLoggedIn, plansCtrl.delete)
 
 export {

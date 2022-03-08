@@ -1,4 +1,5 @@
 import { Plan } from "../models/plan.js"
+import { Disposition } from "../models/disposition.js"
 
 function index(req, res){
   Plan.find({})
@@ -35,11 +36,16 @@ function create(req, res){
 
 function show(req, res) {
   Plan.findById(req.params.id)
-  .then(plan => {
-    res.render('plans/show', {
-      plan,
-      title: "Your Death Plan"
-    })
+  .populate('dispositions')
+  .exec(plan => {
+  Disposition.find({_id: {$nin: plan.dispositions}}
+    .then(dispositions => {
+      res.render('plans/show', {
+        plan,
+        title: "Your Death Plan",
+        dispositions,
+      })
+    }))
   })
   .catch(err => {
     res.redirect('/plans')
@@ -101,6 +107,18 @@ function createWill(req, res){
   })
 }
 
+function addDisposition(req, res){
+  Plan.findById(req.params.id)
+  .then(plan => {
+    plan.dispositions.push(req.body.dispositionId)
+    plan.save()
+    .then(()=>{
+      res.redirect(`/plans/${plan._id}`)
+    })
+  })
+}
+
+
 export{
   index,
   newPlan as new,
@@ -110,6 +128,7 @@ export{
   edit,
   update,
   createWill,
+  addDisposition,
 
 }
 
