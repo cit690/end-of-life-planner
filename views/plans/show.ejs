@@ -34,6 +34,13 @@
     <div>
       <%= plan.dnr ? 'Yes' : 'No' %> 
     </div>
+    <div>Preferred Final Disposition Method(s):</div>
+    <ul>
+      <% plan.finalDispo.forEach(dispoMethod => { %> 
+        <li><%= dispoMethod.method %> </li>
+      <% }) %> 
+    </ul>
+ 
   </section>
 
   <form action="/plans/<%= plan._id %>/dispositions" method="post">
@@ -42,10 +49,8 @@
         <option value="<%= disposition._id %> "><%= disposition.method %> </option>
       <% }) %> 
     </select>
-    <label>Do you wish to be embalmed?:</label>
-    <input type="checkbox" name="embalm">
     <button>Add Your Preferred Final Disposition Method</button>
-  </form>
+    </form>
 
   <h2>Living Will Statement</h2>
   <form action="/plans/<%= plan._id %>/wills" method="post">

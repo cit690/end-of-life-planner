@@ -34,23 +34,37 @@ function create(req, res){
   })
 }
 
+// function show(req, res) {
+//   Plan.findById(req.params.id)
+//   .then(plan => {
+//     res.render('plans/show', {
+//       plan,
+//       title: "Your Death Plan"
+//     })
+//   })
+//   .catch(err => {
+//     res.redirect('/plans')
+//   })
+// }
 function show(req, res) {
-  Plan.findById(req.params.id)
-  .populate('dispositions')
-  .exec(plan => {
-  Disposition.find({_id: {$nin: plan.dispositions}}
-    .then(dispositions => {
+  console.log(req.params.id)
+ 
+  Plan.findById(req.params.id).populate('finalDispo').then(plan => {
+    Disposition.find({_id: {$nin: plan.finalDispo}}, function(err, dispositions){
+    console.log(dispositions)
       res.render('plans/show', {
         plan,
-        title: "Your Death Plan",
         dispositions,
+        title: "Your Death Plan"
       })
-    }))
+    })
   })
-  .catch(err => {
-    res.redirect('/plans')
-  })
+
 }
+//   console.log('hello world')
+//   console.log(req.params.id)
+//   console.log(plan)
+
 
 function deletePlan(req, res){
   Plan.findByIdAndDelete(req.params.id)
