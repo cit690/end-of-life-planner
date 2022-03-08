@@ -37,8 +37,8 @@
   </section>
 
   <form action="/plans/<%= plan._id %>/dispositions" method="post">
-    <select name="dispositionId">
-      <% dispositions.forEach( => { %>
+    <select name="disposition">
+      <% dispositions.forEach(disposition => { %>
         <option value="<%= disposition._id %> "><%= disposition.method %> </option>
       <% }) %> 
     </select>
