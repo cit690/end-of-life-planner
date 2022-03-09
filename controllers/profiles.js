@@ -1,4 +1,5 @@
 import { Profile } from "../models/profile.js"
+import { Plan } from "../models/plan.js"
 
 function index(req, res) {
   Profile.find({})
@@ -32,6 +33,18 @@ function show(req, res) {
     res.redirect("/")
   })
 }
+
+// function show(req, res) {
+//   Plan.findById(req.params.id).populate('finalDispo').then(plan => {
+//     Disposition.find({_id: {$nin: plan.finalDispo}}, function(err, dispositions){
+//       res.render('plans/show', {
+//         plan,
+//         dispositions,
+//         title: "Your Death Plan"
+//       })
+//     })
+//   })
+// }
 
 export {
   index,

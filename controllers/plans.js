@@ -25,7 +25,6 @@ function create(req, res){
   req.body.dnr = !!req.body.dnr
   Plan.create(req.body)
   .then(plan => {
-    console.log(plan)
     res.redirect(`/plans/${plan._id}`)
   })
   .catch(err => {
@@ -66,6 +65,7 @@ function deletePlan(req, res){
 }
 
 function edit(req, res){
+  
   Plan.findById(req.params.id)
   .then(plan => {
     res.render('plans/edit', {
@@ -123,6 +123,17 @@ function addDisposition(req, res){
   })
 }
 
+function deleteWill(req, res){
+  Plan.findById(req.params.id)
+  .then (plan => {
+    plan.wills.remove({_id:req.params.willId})
+    plan.save()
+    .then(() => {
+      res.redirect(`/plans/${plan._id}`)
+    })
+  })
+}
+
 
 export{
   index,
@@ -134,6 +145,6 @@ export{
   update,
   createWill,
   addDisposition,
-
+  deleteWill,
 }
 

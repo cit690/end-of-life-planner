@@ -4,11 +4,13 @@
 
 <main>
   <h1><%= title %> </h1>
+  <% if (plan.owner.equals(user?.profile._id)) { %>
   <div>
     <a href="/plans/<%= plan._id %>/edit ">
       <button>Edit Your Plan</button>
     </a>
   </div>
+  <% } %> 
   <section>
     <div>Name: </div>
     <div>
@@ -51,23 +53,28 @@
     </select>
     <button type="submit">Add Your Preferred Final Disposition Method</button>
     </form>
-    <% } %> 
+    
   <h2>Living Will Statement</h2>
   <form action="/plans/<%= plan._id %>/wills" method="post">
     <textarea name="content" id="content-textarea"></textarea>
     <button type="submit">Add Will</button>
   </form>
+  <% } %> 
     <% if (plan.wills.length) {%> 
       <body> 
         <% plan.wills.forEach(will => { %> 
         <p>
           <%= will.content %> 
+          <form action="/plans/<%=plan._id%>/wills/<%=will._id%>?_method=DELETE" method="POST">
+            <button>X</button>
+          </form>
         </p>
           <% }) %> 
         </body>
     <% } else { %> 
           <h4>No Will Statement Yet</h4>
     <% } %> 
+    
 </main>
 
 <%- include('../partials/footer') %>
