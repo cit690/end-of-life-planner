@@ -22,7 +22,7 @@ router.post('/:id/dispositions', isLoggedIn, plansCtrl.addDisposition)
 
 router.delete('/:id', isLoggedIn, plansCtrl.delete)
 
-router.delete('/:id/wills/willId', isLoggedIn, plansCtrl.deleteWill)
+router.delete('/:id/wills/:willId', isLoggedIn, plansCtrl.deleteWill)
 
 export {
   router

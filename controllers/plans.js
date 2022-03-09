@@ -6,7 +6,7 @@ function index(req, res){
   .then(plans => {
     res.render('plans/index',{
       plans,
-      title: 'Your plans'
+      title: 'All Plans'
     })
   })
   .catch(err => {
@@ -65,7 +65,7 @@ function deletePlan(req, res){
 }
 
 function edit(req, res){
-  
+
   Plan.findById(req.params.id)
   .then(plan => {
     res.render('plans/edit', {
@@ -98,11 +98,10 @@ function update(req, res){
 }
 
 function createWill(req, res){
-  console.log('bloop')
   Plan.findById(req.params.id)
   .then(plan => {
     plan.wills.push(req.body)
-    plan.save()
+    plan.delete()
     .then(() => {
       res.redirect(`/plans/${plan._id}`)
     })
@@ -126,7 +125,7 @@ function addDisposition(req, res){
 function deleteWill(req, res){
   Plan.findById(req.params.id)
   .then (plan => {
-    plan.wills.remove({_id:req.params.willId})
+    plan.wills.remove({_id: req.params.willId})
     plan.save()
     .then(() => {
       res.redirect(`/plans/${plan._id}`)

@@ -33,6 +33,10 @@ function show(req, res) {
     res.redirect("/")
   })
 }
+// .populate('deathPlan')
+// .then(profile => {
+//   Plan.find({_id: {$nin: profile.deathPlan}}, )
+// })
 
 // function show(req, res) {
 //   Plan.findById(req.params.id).populate('finalDispo').then(plan => {

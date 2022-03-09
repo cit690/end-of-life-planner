@@ -12,32 +12,38 @@
   </div>
   <% } %> 
   <section>
-    <div>Name: </div>
-    <div>
-      <%= plan.name %> 
-    </div>
-    <div>Date of Birth: </div>
-    <div>
-      <%= plan.dateOfBirth %>
-    </div>
-    <div>Location: </div>
-    <div>
-      <%= plan.location %> 
-    </div>
-    <div>Next of Kin: </div>
-    <div>
-      <%= plan.nextOfKin %> 
-    </div>
-    <div>Durable Power of Attorney: </div>
-    <div>
-      <%= plan.powerOfAttorney %> 
-    </div>
-    <div>Do Not Resuscitate?: </div>
-    <div>
-      <%= plan.dnr ? 'Yes' : 'No' %> 
-    </div>
+    <div>Name: 
+      <span class="form-inputs">
+      <%= plan.name %> </div>
+      </span>
+ 
+    <div>Date of Birth: 
+      <span class="form-inputs">
+      <%= plan.dateOfBirth %></div>
+    </span>
+ 
+    <div>Location: 
+      <span class="form-inputs">
+      <%= plan.location %></div>
+    </span>
+  
+    <div>Next of Kin: 
+      <span class="form-inputs">
+      <%= plan.nextOfKin %></div>
+    </span>
+ 
+    <div>Durable Power of Attorney:
+      <span class="form-inputs">
+      <%= plan.powerOfAttorney %></div>
+    </span>
+ 
+    <div>Do Not Resuscitate?:
+      <span class="form-inputs">
+      <%= plan.dnr ? 'Yes' : 'No' %></div>
+    </span>
+  
     <div>Preferred Final Disposition Method(s):</div>
-    <ul>
+    <ul class="form-inputs">
       <% plan.finalDispo.forEach(dispoMethod => { %> 
         <li><%= dispoMethod.method %> </li>
       <% }) %> 
@@ -57,20 +63,21 @@
   <h2>Living Will Statement</h2>
   <form action="/plans/<%= plan._id %>/wills" method="post">
     <textarea name="content" id="content-textarea"></textarea>
+    <br>
     <button type="submit">Add Will</button>
   </form>
   <% } %> 
     <% if (plan.wills.length) {%> 
-      <body> 
         <% plan.wills.forEach(will => { %> 
-        <p>
+        <p id="will-id">
           <%= will.content %> 
+          <% if (plan.owner.equals(user?.profile._id)) { %>
           <form action="/plans/<%=plan._id%>/wills/<%=will._id%>?_method=DELETE" method="POST">
             <button>X</button>
           </form>
+          <% } %> 
         </p>
           <% }) %> 
-        </body>
     <% } else { %> 
           <h4>No Will Statement Yet</h4>
     <% } %> 

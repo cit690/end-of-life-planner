@@ -50,12 +50,13 @@ function show(req, res) {
 
 
       <ul>
-        <% plans.forEach(plan => { %> 
+        <% profile.deathPlan.forEach(plan => { %> 
           <li>
             <a href="/plans/<%= plan._id %>"><%= plan.name %>, <%= plan.location %></a>
           </li>
-          <form action="/plans/<%= plan._id %>?_method=DELETE" method="POST">
-            <button>X</button>
-          </form>
-        <% }) %> 
-      </ul>
+          <% }) %> 
+        </ul>
+        
+        <form action="/plans/<%= plan._id %>?_method=DELETE" method="POST">
+          <button>X</button>
+        </form>

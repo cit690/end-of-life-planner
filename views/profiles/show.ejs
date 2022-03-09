@@ -5,7 +5,13 @@
 <section>
   <h1><%= title %> </h1>
 
-  
+  <ul>
+    <% profile.deathPlan.forEach(plan => { %> 
+      <li>
+        <a href="/plans/<%= plan._id %>"><%= plan.name %>, <%= plan.location %></a>
+      </li>
+      <% }) %> 
+    </ul>
 
   <% if (isSelf) { %>
     <h2>Create a <a href="/plans/new">New Death Plan</a></h2>
