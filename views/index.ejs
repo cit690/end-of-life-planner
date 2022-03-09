@@ -13,7 +13,18 @@
     <% } %>
     <% if (user){ %> 
     <h2>Create a <a href="/plans/new">New Death Plan</a></h2>
-    <h2>View Your <a href="/plans">Death Plans</a></h2>
+    <h2>View Your <a href="/profiles/show">Profile</a></h2>
+    <h2>View All <a href="/profiles">Profiles</a></h2>
+    <% } else {%> 
+    <h2>You take charge of your everyday life,
+      <br>
+      so why not take charge of the end of your life?
+    </h2>
+    <a href="/auth/google">
+      <button type="submit">
+        Sign Up Here!
+      </button>
+    </a>
     <% } %> 
 </main>
 

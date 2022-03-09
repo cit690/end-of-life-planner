@@ -1,0 +1,11 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %> </h1>
+  <% profiles.forEach(profile => { %> 
+    <div><a href="/profiles/<%= profile._id %>"><%= profile.name %></a></div>
+  <% }) %> 
+</main>
+
+<%- include('../partials/footer') %>

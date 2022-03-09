@@ -41,3 +41,21 @@ function show(req, res) {
       </select>
       <button>Add Your Preferred Final Disposition Method</button>
       </form>
+
+      <a href="/auth/google" class="siwg-link">
+        <button type="submit" class="siwg">
+          Sign Up Here!
+        </button>
+      </a>
+
+
+      <ul>
+        <% plans.forEach(plan => { %> 
+          <li>
+            <a href="/plans/<%= plan._id %>"><%= plan.name %>, <%= plan.location %></a>
+          </li>
+          <form action="/plans/<%= plan._id %>?_method=DELETE" method="POST">
+            <button>X</button>
+          </form>
+        <% }) %> 
+      </ul>

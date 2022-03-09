@@ -40,7 +40,7 @@
         <li><%= dispoMethod.method %> </li>
       <% }) %> 
     </ul>
- 
+    
   </section>
   <% if (plan.owner.equals(user?.profile._id)) { %>
   <form action="/plans/<%= plan._id %>/dispositions" method="post">
