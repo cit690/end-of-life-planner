@@ -1,5 +1,4 @@
 import { Profile } from "../models/profile.js"
-import { Plan } from "../models/plan.js"
 
 function index(req, res) {
   Profile.find({})
@@ -39,5 +38,4 @@ function show(req, res) {
 export {
   index,
   show,
-  // deletePlan as delete,
 }

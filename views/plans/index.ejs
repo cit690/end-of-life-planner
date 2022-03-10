@@ -9,11 +9,6 @@
       <li>
         <a href="/plans/<%= plan._id %>"><%= plan.name %>, <%= plan.location %></a>
       </li>
-      <% if (plan.owner.equals(user?.profile._id)) { %>
-      <form action="/plans/<%= plan._id %>?_method=DELETE" method="POST">
-        <button>X</button>
-      </form>
-      <% } %> 
     <% }) %> 
   </ul>
 </section>

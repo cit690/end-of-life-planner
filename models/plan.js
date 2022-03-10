@@ -13,6 +13,7 @@ const planSchema = new mongoose.Schema({
   },
   dateOfBirth: {
     type: Date,
+    default: Date.now(),
     required: true,
   },
   location: String,

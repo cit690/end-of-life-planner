@@ -22,6 +22,10 @@ function newPlan(req,res){
 }
 
 function create(req, res){
+  let birthDate = new Date(req.body.dateOfBirth)
+  req.body.dateOfBirth = new Date( birthDate.getTime() + Math.abs(birthDate.getTimezoneOffset()*60000))
+
+
   req.body.owner = req.user.profile._id
   req.body.dnr = !!req.body.dnr
   Plan.create(req.body)

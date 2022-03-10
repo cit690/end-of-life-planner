@@ -19,7 +19,7 @@
  
     <div>Date of Birth: 
       <span class="form-inputs">
-      <%= plan.dateOfBirth %></div>
+        <%= new Date(plan.dateOfBirth).toLocaleDateString('en-US', {day: 'numeric', month:'numeric', year: 'numeric'}); %></div>
     </span>
  
     <div>Location: 
