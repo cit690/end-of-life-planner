@@ -3,11 +3,11 @@
 <%- include('../partials/nav') %>
 
 <section>
-  <% if (user?.profile.avatar) { %>
+  <% if (profile.avatar) { %>
     <div>
       <img
-        src="<%= user.profile.avatar %>"
-        alt="<%= user.profile.name %> avatar"
+        src="<%= profile.avatar %>"
+        alt="<%= profile.name %> avatar"
       />
     </div>
     <% } %>
