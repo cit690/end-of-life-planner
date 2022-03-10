@@ -16,8 +16,9 @@ function index(req, res) {
 }
 
 function show(req, res) {
-  Profile.findById(req.params.id)
+  Profile.findById(req.params.id).populate('deathPlans')
   .then((profile) => {
+    console.log('PROFILE CHECK', profile)
     Profile.findById(req.user.profile._id)
     .then(self => {
       const isSelf = self._id.equals(profile._id)

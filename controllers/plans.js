@@ -1,5 +1,6 @@
 import { Plan } from "../models/plan.js"
 import { Disposition } from "../models/disposition.js"
+import { Profile } from "../models/profile.js"
 
 function index(req, res){
   Plan.find({})
@@ -25,7 +26,12 @@ function create(req, res){
   req.body.dnr = !!req.body.dnr
   Plan.create(req.body)
   .then(plan => {
-    res.redirect(`/plans/${plan._id}`)
+    Profile.findById(req.user.profile._id)
+    .then(profile => {
+      profile.deathPlans.push(plan._id)
+      profile.save()
+      res.redirect(`/plans/${plan._id}`)
+    })
   })
   .catch(err => {
     res.redirect('/plans/new')

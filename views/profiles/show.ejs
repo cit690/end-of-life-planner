@@ -6,7 +6,7 @@
   <h1><%= title %> </h1>
 
   <ul>
-    <% profile.deathPlan.forEach(plan => { %> 
+    <% profile.deathPlans.forEach(plan => { %> 
       <li>
         <a href="/plans/<%= plan._id %>"><%= plan.name %>, <%= plan.location %></a>
       </li>
