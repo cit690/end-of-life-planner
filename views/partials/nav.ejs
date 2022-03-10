@@ -5,7 +5,6 @@
 <body>
   <nav>
     <% if (user) { %>
-      <a href="/" <%- title === 'Home' ? 'class="active"' : "" %> >Home</a>
       <a href="/plans" <%- title === 'All Death Plans' ? 'class="active"' : "" %> >All Plans</a>
       <a href="/plans/new" <%- title === 'Add Death Plans' ? 'class="active"' : "" %> >Create a Plan</a>
       <a href="/profiles" <%- title === 'All Profiles' ? 'class="active"' : "" %> >All Profiles</a>
