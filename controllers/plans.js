@@ -30,7 +30,7 @@ function create(req, res){
     .then(profile => {
       profile.deathPlans.push(plan._id)
       profile.save()
-      res.redirect(`/plans/${plan._id}`)
+      res.redirect(`/profiles/${profile._id}`)
     })
   })
   .catch(err => {
@@ -55,7 +55,7 @@ function show(req, res) {
 function deletePlan(req, res){
   Plan.findByIdAndDelete(req.params.id)
   .then(profile => {
-    res.redirect(`/profiles/${profile._id}`)
+    res.redirect(`/profiles/${req.user.profile._id}`)
   })
 }
 

@@ -3,8 +3,15 @@
 <%- include('../partials/nav') %>
 
 <section>
+  <% if (user?.profile.avatar) { %>
+    <div>
+      <img
+        src="<%= user.profile.avatar %>"
+        alt="<%= user.profile.name %> avatar"
+      />
+    </div>
+    <% } %>
   <h1><%= title %> </h1>
-
   <ul>
     <% profile.deathPlans.forEach(deathPlan => { %> 
       <li>
