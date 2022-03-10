@@ -100,7 +100,7 @@ function createWill(req, res){
   Plan.findById(req.params.id)
   .then(plan => {
     plan.wills.push(req.body)
-    plan.delete()
+    plan.save()
     .then(() => {
       res.redirect(`/plans/${plan._id}`)
     })
