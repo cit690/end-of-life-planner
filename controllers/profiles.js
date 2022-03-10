@@ -4,6 +4,7 @@ import { Plan } from "../models/plan.js"
 function index(req, res) {
   Profile.find({})
   .then(profiles => {
+    console.log(profiles, 'profiles from index')
     res.render('profiles/index', {
       profiles,
       title: "All User Profiles"
@@ -34,19 +35,25 @@ function show(req, res) {
     res.redirect("/")
   })
 }
-// .populate('deathPlan')
-// .then(profile => {
-//   Plan.find({_id: {$nin: profile.deathPlan}}, )
-// })
 
-// function show(req, res) {
-//   Plan.findById(req.params.id).populate('finalDispo').then(plan => {
-//     Disposition.find({_id: {$nin: plan.finalDispo}}, function(err, dispositions){
-//       res.render('plans/show', {
-//         plan,
-//         dispositions,
-//         title: "Your Death Plan"
-//       })
+// function deletePlan(req, res){
+//   Profile.findById(req.params.id)
+//   .then (profile => {
+//     profile.deathPlan.remove({_id: req.params.planId})
+//     profile.save()
+//     .then(() => {
+//       res.redirect(`/profiles/${profile._id}`)
+//     })
+//   })
+// }
+
+// function deleteWill(req, res){
+//   Plan.findById(req.params.id)
+//   .then (plan => {
+//     plan.wills.remove({_id: req.params.willId})
+//     plan.save()
+//     .then(() => {
+//       res.redirect(`/plans/${plan._id}`)
 //     })
 //   })
 // }
@@ -54,4 +61,5 @@ function show(req, res) {
 export {
   index,
   show,
+  // deletePlan as delete,
 }

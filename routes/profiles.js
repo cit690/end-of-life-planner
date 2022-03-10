@@ -8,6 +8,8 @@ router.get('/', isLoggedIn, profilesCtrl.index)
 
 router.get('/:id', isLoggedIn, profilesCtrl.show)
 
+// router.delete('/:id/plans/:planId', isLoggedIn, profilesCtrl.deletePlan)
+
 export {
   router
 }

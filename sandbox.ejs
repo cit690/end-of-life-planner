@@ -56,7 +56,9 @@ function show(req, res) {
           </li>
           <% }) %> 
         </ul>
-        
+
         <form action="/plans/<%= plan._id %>?_method=DELETE" method="POST">
           <button>X</button>
         </form>
+
+        <h2>Create a <a href="/plans/new">New Death Plan</a></h2>

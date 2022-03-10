@@ -6,10 +6,16 @@
   <h1><%= title %> </h1>
 
   <ul>
-    <% profile.deathPlans.forEach(plan => { %> 
+    <% profile.deathPlans.forEach(deathPlan => { %> 
       <li>
-        <a href="/plans/<%= plan._id %>"><%= plan.name %>, <%= plan.location %></a>
+        <a href="/plans/<%= deathPlan._id %>"><%= deathPlan.name %>, <%= deathPlan.location %></a>
       </li>
+      <% if (isSelf) { %>
+        <form action="/plans/<%= deathPlan._id %>?_method=DELETE" method="POST">
+          <button>X</button>
+        </form>
+        <% } %> 
+      
       <% }) %> 
     </ul>
 

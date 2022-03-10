@@ -39,18 +39,7 @@ function create(req, res){
   })
 }
 
-// function show(req, res) {
-//   Plan.findById(req.params.id)
-//   .then(plan => {
-//     res.render('plans/show', {
-//       plan,
-//       title: "Your Death Plan"
-//     })
-//   })
-//   .catch(err => {
-//     res.redirect('/plans')
-//   })
-// }
+
 function show(req, res) {
   Plan.findById(req.params.id).populate('finalDispo').then(plan => {
     Disposition.find({_id: {$nin: plan.finalDispo}}, function(err, dispositions){
@@ -65,8 +54,8 @@ function show(req, res) {
 
 function deletePlan(req, res){
   Plan.findByIdAndDelete(req.params.id)
-  .then(plan => {
-    res.redirect('/plans')
+  .then(profile => {
+    res.redirect(`/profiles/${profile._id}`)
   })
 }
 
