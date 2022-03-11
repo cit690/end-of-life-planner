@@ -33,3 +33,4 @@ One of my greatest, yet most misunderstood passions in end of life advocacy. It 
 -Give users the ability to set their profiles to private or public
 -Allow users to privately message one another
 -Allow users to upload photos
+-Make mobile friendly
