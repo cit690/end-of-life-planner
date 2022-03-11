@@ -14,6 +14,18 @@ One of my greatest, yet most misunderstood passions in end of life advocacy. It 
 
 ----
 
+### **ERD**
+
+<img src ="https://i.imgur.com/9LJygf8.png">
+
+----
+
+### **Wireframe**
+
+<img src="https://i.imgur.com/mBgHXou.png">
+
+-----
+
 ### **Technology used**
 
 ![Mac OS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
